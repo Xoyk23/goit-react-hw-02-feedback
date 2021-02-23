@@ -1,25 +1,26 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends React.Component {
+  state = {
+    good: 0,
+    neutral: 0,
+    bad: 0,
+  };
+
+  render() {
+    return (
+      <section>
+        <h2>Please, leave feedback</h2>
+        <button>Good</button>
+        <button>Neutral</button>
+        <button>Bad</button>
+        <h2>Statistic: </h2>
+        <p>Good: = {this.state.good}</p>
+        <p>Neutral = {this.state.neutral}</p>
+        <p>Bad = {this.state.bad}</p>
+      </section>
+    );
+  }
 }
 
 export default App;
