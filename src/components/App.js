@@ -1,24 +1,54 @@
-import React from 'react';
+import React, { Component } from 'react';
 
-class App extends React.Component {
+import Section from './Section';
+import FeedbackOptions from './FeedbackOptions';
+
+class App extends Component {
   state = {
     good: 0,
     neutral: 0,
     bad: 0,
   };
 
+  handleGoodFeedback = () => {
+    this.setState(prevState => ({
+      good: prevState.good + 1,
+    }));
+  };
+
+  handleBadFeedback = () => {
+    this.setState(prevState => ({
+      bad: prevState.bad + 1,
+    }));
+  };
+
+  // countPositiveFeedbackPercentage = () => {
+  //   Math.round(total / good);
+  // };
+
+  heandleFeedback = ({ currentTarget }) => {
+    this.setState(prevState => ({
+      [currentTarget.name]: prevState[currentTarget.name] + 1,
+    }));
+  };
+
   render() {
+    const { good, neutral, bad } = this.state;
+
+    const total = good + neutral + bad;
+
     return (
-      <section>
-        <h2>Please, leave feedback</h2>
-        <button>Good</button>
-        <button>Neutral</button>
-        <button>Bad</button>
+      <Section title="Please, leave feedback">
+        <FeedbackOptions
+          handleFeedback={this.heandleFeedback}
+          addGoodFeedBack={this.handleGoodFeedback}
+        />
         <h2>Statistic: </h2>
-        <p>Good: = {this.state.good}</p>
-        <p>Neutral = {this.state.neutral}</p>
-        <p>Bad = {this.state.bad}</p>
-      </section>
+        <p>Good: = {good}</p>
+        <p>Neutral = {neutral}</p>
+        <p>Bad = {bad}</p>
+        <p>Total ={total}</p>
+      </Section>
     );
   }
 }
