@@ -11,19 +11,7 @@ class App extends Component {
     bad: 0,
   };
 
-  // handleGoodFeedback = () => {
-  //   this.setState(prevState => ({
-  //     good: prevState.good + 1,
-  //   }));
-  // };
-
-  // handleBadFeedback = () => {
-  //   this.setState(prevState => ({
-  //     bad: prevState.bad + 1,
-  //   }));
-  // };
-
-  onLeaveFeedback = e => {
+  leaveFeedback = e => {
     console.log(e.target.name);
 
     this.setState(prevState => ({
@@ -38,10 +26,7 @@ class App extends Component {
 
     return (
       <Section title="Please, leave feedback">
-        <FeedbackOptions
-          handleFeedback={this.onLeaveFeedback}
-          addGoodFeedBack={this.handleGoodFeedback}
-        />
+        <FeedbackOptions handleFeedback={this.leaveFeedback} />
         <Statistic good={good} neutral={neutral} bad={bad} total={total} />
       </Section>
     );

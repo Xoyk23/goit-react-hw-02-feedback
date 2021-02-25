@@ -1,8 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const Notification = () => {
-  return <p>No feedback given \_(ツ)_/¯</p>;
+const Notification = ({ message }) => {
+  return <p>{message}</p>;
+};
+
+Notification.defaultProps = {
+  message: 'No feedback given ',
+};
+Notification.propTypes = {
+  message: PropTypes.string.isRequired,
 };
 
 export default Notification;
